@@ -1,17 +1,29 @@
-import React from 'react'
+import axios from 'axios'
 
-const postUserLogin = () => {
-    const post = axios.post("http://localhost:3001/api-docs/#/User%20Module/post_user_login")
+const baseURL = "http://localhost:3001/api/v1/user/"
+
+export const postUserLogin = async (credentials) => {
+   const response =  await axios.post(baseURL + "login", credentials)
+   localStorage.setItem("JWT", response.data.body.token)
+
+    return true
 }
 
-const postUserSignup = () =>{
-    const post = axios.post("http://localhost:3001/api-docs/#/User%20Module/post_user_signup")
+export const postUserSignup = async (state) =>{
+    return axios.post(baseURL + "signup", {
+        email: state.email,
+        password: state.password
+    })
 }
 
-const postUserProfile = () =>{
-    const post = axios.post("http://localhost:3001/api-docs/#/User%20Module/post_user_profile")
+export const postUserProfile = async () =>{
+    return axios.post(baseURL + "profile", {
+        headers : {
+            Authorization : "Bearer " + localStorage.getItem("JWT")
+        }
+    })
 }
 
-const putUserProfile = () => {
-    const putUser = axios.put("http://localhost:3001/api-docs/#/User%20Module/put_user_profile")
+export const putUserProfile = async () => {
+    return axios.put(baseURL + "profile")
 }
