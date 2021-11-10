@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import './Login.css'
-import { postUserLogin } from '../../services/api'
+import { postUserLogin, postUserProfile } from '../../services/api'
 import { useDispatch } from 'react-redux'
 import {store} from "./../../services/store"
 
@@ -24,7 +24,12 @@ export default function Login() {
         })
         .then(response => {
             dispatch({type: "AUTHENTIFICATION_USER"})
+            postUserProfile()
+            .then(response =>{
+                store.
+            })
             redirect("/user")
+            console.log(store.getState());
         })
         .catch(err => console.error(err))
     }

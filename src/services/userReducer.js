@@ -10,7 +10,7 @@ const initialState = {
 }
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
-            case AUTHENTIFICATION_USER :
+        case AUTHENTIFICATION_USER :
             return {
             ...state,
             email: action.email,

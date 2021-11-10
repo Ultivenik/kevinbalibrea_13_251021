@@ -17,9 +17,9 @@ export const postUserSignup = async (state) =>{
 }
 
 export const postUserProfile = async () =>{
-    return axios.post(baseURL + "profile", {
+    return axios.post(baseURL + "profile", {}, {
         headers : {
-            Authorization : "Bearer " + localStorage.getItem("JWT")
+            Authorization : "Attach Bearer " + localStorage.getItem("JWT")
         }
     })
 }
