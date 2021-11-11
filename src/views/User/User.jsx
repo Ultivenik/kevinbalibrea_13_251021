@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './User.css'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 // import {store} from "./../../services/store"
@@ -8,9 +9,8 @@ import { postUserProfile } from '../../services/api'
 export default function User() {
     const user = state => state
     const userSelector = useSelector(user)
-    console.log(userSelector.isLogged);
-    useEffect( async() => {
-        await postUserProfile()
+    useEffect(() => {
+        postUserProfile()
         
 
     }, [])

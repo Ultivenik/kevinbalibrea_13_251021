@@ -6,7 +6,7 @@ export const postUserLogin = async (credentials) => {
    const response =  await axios.post(baseURL + "login", credentials)
    localStorage.setItem("JWT", response.data.body.token)
 
-    return true
+    return response
 }
 
 export const postUserSignup = async (state) =>{

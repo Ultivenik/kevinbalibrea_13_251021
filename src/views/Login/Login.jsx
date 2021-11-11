@@ -22,14 +22,14 @@ export default function Login() {
             email: e.target[0].value,
             password: e.target[1].value
         })
-        .then(response => {
+        .then(() => {
             dispatch({type: "AUTHENTIFICATION_USER"})
             postUserProfile()
-            .then(response =>{
-                store.
+            .then(postUser =>{
+                const state = store.getState()
+               console.log(postUser.data.body);
             })
             redirect("/user")
-            console.log(store.getState());
         })
         .catch(err => console.error(err))
     }
