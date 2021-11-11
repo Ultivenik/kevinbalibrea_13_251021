@@ -1,3 +1,5 @@
+import { postUserLogin, postUserProfile } from "./api"
+
 export const AUTHENTIFICATION_USER = {
     type: "AUTHENTIFICATION_USER",
     payload:"authentified"
@@ -13,4 +15,17 @@ export const LAST_NAME = {
 export const DECONECT = {
     type: "DECONECT",
     payload:"disconected"
+}
+
+export const login = ({email, password}) => {
+    return async (dispatch, getState) => {
+        try {
+            const { token } = await postUserLogin({email, password})
+            localStorage.setItem('JWT', token)
+            const profil = await postUserProfile()
+            dispatch({type: "login/success", payload: profil})
+        } catch(error) {
+            dispatch({type: "login/error", payload: error.message})
+        }
+    }
 }
