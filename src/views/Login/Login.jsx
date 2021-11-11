@@ -1,43 +1,34 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import './Login.css'
-import { postUserLogin, postUserProfile } from '../../services/api'
-import { useDispatch } from 'react-redux'
-import {store} from "./../../services/store"
+import { login } from '../../services/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 export default function Login() {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const redirect = (URL) =>{
-        let url = URL
-        history.push(url)
-    }
+    const error = useSelector(state => state.error)
+    const isLogged = useSelector(state => state.isLogged)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-         postUserLogin({
+        dispatch(login( {
             email: e.target[0].value,
             password: e.target[1].value
-        })
-        .then(response => {
-            dispatch({type: "AUTHENTIFICATION_USER"})
-            postUserProfile()
-            .then(response =>{
-                store.
-            })
-            redirect("/user")
-            console.log(store.getState());
-        })
-        .catch(err => console.error(err))
+        }))
     }
 
-    return (
+    return isLogged ? <Redirect
+            to={{
+            pathname: "/user",
+            }}
+        /> : (
         <React.Fragment>
             <Header />
             <main className="main bg-dark">
+                { error && <div>{error}</div>}
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
