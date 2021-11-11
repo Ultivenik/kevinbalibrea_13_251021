@@ -28,7 +28,7 @@ export default function Login() {
             redirect("/user")
         })
         .catch(err => console.error(err))
-        }))
+        )
     }
 
     return isLogged ? <Redirect
