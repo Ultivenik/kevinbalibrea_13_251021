@@ -10,23 +10,20 @@ const initialState = {
 }
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
-        case AUTHENTIFICATION_USER :
-            return {
-            ...state,
-            email: action.email,
-            password: action.password,
-            token: action.token,
-            isLogged: true,
-        }
-        case FIRST_NAME:
+        case "login/success":
+            const profil = action.payload
             return {
                 ...state,
-                firstName: action.firstName
+                firstName: profil.firstName,
+                isLogged: true,
+                // ..........
             }
-        case DECONECT:
+        case "login/error":
             return {
                 ...state,
-                lastName: action.lastName
+                isLogged: false,
+                error: action.payload,
+                // ..........
             }
         default:
             return state
