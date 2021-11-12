@@ -19,7 +19,6 @@ export default function Login() {
             email: e.target[0].value,
             password: e.target[1].value
         }))
-        console.log(localStorage.getItem("JWT"));
     }
 
     return isLogged ? <Redirect

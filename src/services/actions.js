@@ -19,13 +19,13 @@ export const DECONECT = {
 
 export const login = ({email, password}) => {
     return async (dispatch, getState) => {
-        const { token } = await postUserLogin({email, password})
         try {
+            const { token } = await postUserLogin({email, password})
             localStorage.setItem('JWT', token)
             const profil = await postUserProfile()
             dispatch({type: "login/success", payload: profil})
         } catch(error) {
-            if (!token) {
+            if (localStorage.getItem('JWT')) {
                 dispatch({type: "login/error", payload: error.message})
             }
         }
