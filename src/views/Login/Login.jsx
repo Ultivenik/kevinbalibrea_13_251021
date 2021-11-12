@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import './Login.css'
 import { login } from '../../services/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { postUserProfile } from '../../services/api'
 
 
 export default function Login() {
@@ -14,21 +15,20 @@ export default function Login() {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        dispatch(login( {
+        dispatch(login({
             email: e.target[0].value,
             password: e.target[1].value
-        })
+        }))
         .then(() => {
             dispatch({type: "AUTHENTIFICATION_USER"})
             postUserProfile()
             .then(postUser =>{
-                const state = store.getState()
+                // const state = store.getState()
                console.log(postUser.data.body);
             })
-            redirect("/user")
+            // redirect("/user")
         })
         .catch(err => console.error(err))
-        )
     }
 
     return isLogged ? <Redirect
