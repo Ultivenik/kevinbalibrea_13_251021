@@ -19,16 +19,7 @@ export default function Login() {
             email: e.target[0].value,
             password: e.target[1].value
         }))
-        .then(() => {
-            dispatch({type: "AUTHENTIFICATION_USER"})
-            postUserProfile()
-            .then(postUser =>{
-                // const state = store.getState()
-               console.log(postUser.data.body);
-            })
-            // redirect("/user")
-        })
-        .catch(err => console.error(err))
+        console.log(localStorage.getItem("JWT"));
     }
 
     return isLogged ? <Redirect
