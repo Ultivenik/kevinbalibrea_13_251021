@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import './Login.css'
 import { login } from '../../services/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { postUserProfile } from '../../services/api'
 
 
 export default function Login() {

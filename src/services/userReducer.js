@@ -1,4 +1,4 @@
-import {AUTHENTIFICATION_USER, DECONECT, FIRST_NAME} from './actions'
+// import {AUTHENTIFICATION_USER, DECONECT, FIRST_NAME} from './actions'
 
 const initialState = {
         firstName: "",
@@ -9,9 +9,9 @@ const initialState = {
         isOpen: false
 }
 export const userReducer = (state = initialState, action) => {
-    const profil = action.payload
     switch(action.type) {
         case "login/success":
+            const profil = action.payload
             return {
                 ...state,
                 firstName: profil.firstName,
@@ -29,7 +29,9 @@ export const userReducer = (state = initialState, action) => {
         case "login/disconected":
             localStorage.clear()
             return {
+                ...state,
                 isLogged: false,
+                isOpen:false
                 // ..........
             }
         case "edit/profile":

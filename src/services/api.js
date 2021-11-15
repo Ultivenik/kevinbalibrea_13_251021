@@ -4,7 +4,6 @@ const baseURL = "http://localhost:3001/api/v1/user/"
 
 export const postUserLogin = async (credentials) => {
    const response =  await axios.post(baseURL + "login", credentials)
-
     return response.data
 }
 
@@ -21,6 +20,8 @@ export const postUserProfile = async () =>{
             Authorization : "Bearer " + localStorage.getItem("JWT")
         }
     })
+        console.log(response.data.body);
+
     return response.data
 }
 

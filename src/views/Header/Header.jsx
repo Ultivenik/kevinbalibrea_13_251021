@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 import logo from "../../img/argentBankLogo.png"
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
@@ -12,7 +12,6 @@ export default function Header() {
 
     const logout = () =>{
         dispatch({type:"login/disconected"})
-        dispatch({type:"edit/closeButton"})
     }
 
     return (

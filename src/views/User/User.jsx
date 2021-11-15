@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './User.css'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import { useSelector } from 'react-redux'
-import { postUserProfile } from '../../services/api'
 import { Redirect } from 'react-router'
 import FormEditProfile from '../FormEditProfile/FormEditProfile'
-import { edit } from '../../services/actions'
 import { useDispatch } from 'react-redux'
 
 export default function User() {
     const dispatch = useDispatch()
-    const name = useSelector(state => console.log(state) && state.firstName)
+    const name = useSelector(state => state.firstName)
     const lastName = useSelector(state => state.lastName)
     const isOpen = useSelector(state => state.isOpen)
 
