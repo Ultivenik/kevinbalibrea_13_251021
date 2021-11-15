@@ -2,10 +2,15 @@ import React from 'react'
 import './Header.css'
 import logo from "../../img/argentBankLogo.png"
 import { Link, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
     const location = useLocation()
+    const firstName = useSelector(state => state.firstName)
 
+    const logout = () =>{
+        localStorage.clear()
+    }
     return (
         <nav className="main-nav">
             <Link className="main-nav-logo" to="/">
@@ -19,9 +24,9 @@ export default function Header() {
             { location.pathname === "/user" ? <div>
                     <Link className="main-nav-item" to="/user" >
                         <i className="fa fa-user-circle"></i>
-                        Tony
+                        {firstName}
                     </Link>
-                    <Link className="main-nav-item" to="/">
+                    <Link onClick={logout} className="main-nav-item" to="/">
                         <i className="fa fa-sign-out"></i>
                         Sign Out
                     </Link>

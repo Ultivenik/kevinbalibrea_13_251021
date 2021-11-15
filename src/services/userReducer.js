@@ -3,10 +3,10 @@ import {AUTHENTIFICATION_USER, DECONECT, FIRST_NAME} from './actions'
 const initialState = {
         firstName: "",
         lastName: "",
-        password: "",
         email:"",
         token:"",
         isLogged: false,
+        isOpen: false
 }
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -15,6 +15,7 @@ export const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 firstName: profil.firstName,
+                lastName: profil.lastName,
                 isLogged: true,
                 // ..........
             }
@@ -25,6 +26,17 @@ export const userReducer = (state = initialState, action) => {
                 error: action.payload,
                 // ..........
             }
+        case "edit/profile":
+            return{
+                ...state,
+                isOpen: true,
+            }
+        case "edit/closeButton":
+            return {
+                ...state,
+                isOpen:false
+            }
+
         default:
             return state
     }

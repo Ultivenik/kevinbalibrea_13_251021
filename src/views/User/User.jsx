@@ -1,20 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './User.css'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
-// import {store} from "./../../services/store"
 import { useSelector } from 'react-redux'
 import { postUserProfile } from '../../services/api'
+import { Redirect } from 'react-router'
+import FormEditProfile from '../FormEditProfile/FormEditProfile'
+import { edit } from '../../services/actions'
+import { useDispatch } from 'react-redux'
 
 export default function User() {
+    const dispatch = useDispatch()
     const name = useSelector(state => state.firstName)
+    const lastName = useSelector(state => state.lastName)
+    const isOpen = useSelector(state => state.isOpen)
+
+    const formOpen = () =>{
+        dispatch({type:"edit/profile"})
+    }
+
     return (
+        localStorage.getItem("JWT")=== null? <Redirect to={{pathname: "/login"}} /> :
         <React.Fragment>
             <Header />
             <main className="main bg-dark">
                 <div className="header">
-                    <h1>Welcome back<br /> {name} !</h1>
-                    <button className="edit-button">Edit Name</button>
+                    <h1>Welcome back<br /> {name} {lastName}!</h1>
+                    { isOpen ? <FormEditProfile /> : <button onClick={formOpen} className="edit-button">Edit Name</button> }
                 </div>
                 <h2 className="sr-only">Accounts</h2>
                 <section className="account">

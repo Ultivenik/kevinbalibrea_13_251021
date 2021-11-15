@@ -6,6 +6,7 @@ import MainContent from "./MainContent/MainContent"
 import './Home'
 
 export default function Home() {
+    localStorage.clear()
     return (
         <React.Fragment>
             <Header />

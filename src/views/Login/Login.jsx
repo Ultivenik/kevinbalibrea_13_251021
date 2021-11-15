@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -20,7 +20,6 @@ export default function Login() {
             password: e.target[1].value
         }))
     }
-
     return isLogged ? <Redirect
             to={{
             pathname: "/user",
@@ -33,7 +32,6 @@ export default function Login() {
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
-
                 <form onSubmit={ handleSubmit }>
                     <div className="input-wrapper">
                         <label htmlFor="username">Username</label>
@@ -53,10 +51,8 @@ export default function Login() {
                         <input type="checkbox" id="remember-me" />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <button type="submit" className="sign-in-button">Sign in </button>
+                    <button className="sign-in-button">Sign in </button>
                 </form>
-
-
             </section>
             </main>
             <Footer />

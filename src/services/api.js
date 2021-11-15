@@ -4,12 +4,11 @@ const baseURL = "http://localhost:3001/api/v1/user/"
 
 export const postUserLogin = async (credentials) => {
    const response =  await axios.post(baseURL + "login", credentials)
-   localStorage.setItem("JWT", response.data.body.token)
 
-    return response
+    return response.data
 }
 
-export const postUserSignup = async (state) =>{
+export const postUserSignup = async (state) => {
     return axios.post(baseURL + "signup", {
         email: state.email,
         password: state.password
@@ -17,13 +16,18 @@ export const postUserSignup = async (state) =>{
 }
 
 export const postUserProfile = async () =>{
-    return axios.post(baseURL + "profile", {}, {
+    const response = await axios.post(baseURL + "profile", {}, {
         headers : {
-            Authorization : "Attach Bearer " + localStorage.getItem("JWT")
+            Authorization : "Bearer " + localStorage.getItem("JWT")
         }
     })
+    return response.data
 }
 
 export const putUserProfile = async () => {
-    return axios.put(baseURL + "profile")
+    return axios.put(baseURL + "profile", {}, {
+        headers : {
+            Authorization : "Bearer " + localStorage.getItem("JWT")
+        }
+    })
 }

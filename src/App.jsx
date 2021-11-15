@@ -15,6 +15,5 @@ export default function App() {
                     <Route exact path="/user" component={User} />
                 </Switch>
             </Router>
-        
     )
 }
