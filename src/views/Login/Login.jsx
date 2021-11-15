@@ -20,7 +20,8 @@ export default function Login() {
             password: e.target[1].value
         }))
     }
-    return isLogged ? <Redirect
+
+    return isLogged ?  <Redirect
             to={{
             pathname: "/user",
             }}

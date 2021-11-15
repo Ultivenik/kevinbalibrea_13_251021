@@ -33,8 +33,7 @@ export const login = ({email, password}) => {
 export const edit = ({firstName, lastName}) => {
     return async (dispatch) => {
         const response = await putUserProfile({firstName, lastName})
-        localStorage.getItem("JWT")
-        dispatch({type: "edit/profile", payload: response.body})
+        dispatch({type: "edit/profile", payload: response.data})
             console.log(response.data)
 
     }

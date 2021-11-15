@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 
 export default function User() {
     const dispatch = useDispatch()
-    const name = useSelector(state => state.firstName)
+    const name = useSelector(state => console.log(state) && state.firstName)
     const lastName = useSelector(state => state.lastName)
     const isOpen = useSelector(state => state.isOpen)
 
@@ -20,7 +20,7 @@ export default function User() {
     }
 
     return (
-        localStorage.getItem("JWT")=== null? <Redirect to={{pathname: "/login"}} /> :
+        localStorage.getItem("JWT") === null ? <Redirect to={{pathname: "/login"}} /> :
         <React.Fragment>
             <Header />
             <main className="main bg-dark">

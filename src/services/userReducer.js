@@ -9,9 +9,9 @@ const initialState = {
         isOpen: false
 }
 export const userReducer = (state = initialState, action) => {
+    const profil = action.payload
     switch(action.type) {
         case "login/success":
-            const profil = action.payload
             return {
                 ...state,
                 firstName: profil.firstName,
@@ -24,6 +24,12 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 isLogged: false,
                 error: action.payload,
+                // ..........
+            }
+        case "login/disconected":
+            localStorage.clear()
+            return {
+                isLogged: false,
                 // ..........
             }
         case "edit/profile":
