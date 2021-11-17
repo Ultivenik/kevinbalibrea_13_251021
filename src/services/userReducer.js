@@ -6,7 +6,8 @@ const initialState = {
         email:"",
         token:"",
         isLogged: false,
-        isOpen: false
+        isOpen: false,
+        isUpdated: false
 }
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -35,6 +36,19 @@ export const userReducer = (state = initialState, action) => {
                 // ..........
             }
         case "edit/profile":
+            return{
+                ...state,
+                isUpdated: true,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+            }
+            case "edit/error":
+            return{
+                ...state,
+                isUpdated: false,
+                error: action.payload
+            }
+        case "edit/openButton":
             return{
                 ...state,
                 isOpen: true,

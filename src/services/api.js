@@ -9,6 +9,8 @@ export const postUserLogin = async (credentials) => {
 
 export const postUserSignup = async (state) => {
     return axios.post(baseURL + "signup", {
+        firstName: state.firstName,
+        lastName: state.lastName,
         email: state.email,
         password: state.password
     })
@@ -20,13 +22,13 @@ export const postUserProfile = async () =>{
             Authorization : "Bearer " + localStorage.getItem("JWT")
         }
     })
-        console.log(response.data.body);
+        console.log(response.data);
 
     return response.data
 }
 
-export const putUserProfile = async () => {
-    return axios.put(baseURL + "profile", {}, {
+export const putUserProfile = async ({firstName,lastName}) => {
+    return axios.put(baseURL + "profile", {firstName,lastName}, {
         headers : {
             Authorization : "Bearer " + localStorage.getItem("JWT")
         }

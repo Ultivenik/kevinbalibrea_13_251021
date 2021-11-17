@@ -33,8 +33,11 @@ export const login = ({email, password}) => {
 export const edit = ({firstName, lastName}) => {
     return async (dispatch) => {
         const response = await putUserProfile({firstName, lastName})
-        dispatch({type: "edit/profile", payload: response.data})
-            console.log(response.data)
-
+        try {
+            dispatch({type: "edit/profile", payload: response.data.body})
+            console.log(dispatch({type: "edit/profile", payload: response.data.body}));
+        } catch (error) {
+            dispatch({type: "edit/error", payload: error.message})
+        }
     }
 }

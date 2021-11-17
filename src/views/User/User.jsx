@@ -14,7 +14,7 @@ export default function User() {
     const isOpen = useSelector(state => state.isOpen)
 
     const formOpen = () =>{
-        dispatch({type:"edit/profile"})
+        dispatch({type:"edit/openButton"})
     }
 
     return (
