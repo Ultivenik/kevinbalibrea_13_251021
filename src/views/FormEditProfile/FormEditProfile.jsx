@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { edit } from '../../services/actions';
+import './FormEditProfile.css'
 
 export default function FormEditProfile() {
     const dispatch = useDispatch()
@@ -12,17 +13,22 @@ export default function FormEditProfile() {
             lastName: e.target[1].value
         }))
     }
+
     const closeForm = () =>{
         dispatch({type:"edit/closeButton"})
     }
+
     return (
-        <form onSubmit={handleEditSubmit}>
+        <form className="edit-profile-form" onSubmit={handleEditSubmit}>
             <p>
-                <input type="text" />
-                <input type="text" />
+                <input className="text-field" type="text" />
+                <input className="text-field" type="text" />
             </p>
-            <button>Save</button>
-            <button onClick={closeForm}>Cancel</button>
+            <p className="btn-container">
+            <button className="btn save-btn">Save</button>
+            <button className="btn cancel-btn" onClick={closeForm}>Cancel</button>
+
+            </p>
         </form>
     )
 }

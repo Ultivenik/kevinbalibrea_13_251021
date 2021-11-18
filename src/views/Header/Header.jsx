@@ -1,5 +1,5 @@
 import React from 'react'
-import './Header.css'
+import './../main.css'
 import logo from "../../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -22,7 +22,7 @@ export default function Header() {
                     src={logo}
                     alt="Argent Bank Logo"
                 />
-                <h1 className="sr-only">Argent Bank</h1>
+                <h1 className="sr-only">Argent Bank </h1>
             </Link>
             { isLogged ? <div>
                     <Link className="main-nav-item" to="/user" >

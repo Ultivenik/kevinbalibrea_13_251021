@@ -1,5 +1,5 @@
 import React from 'react'
-import './MainContent.css'
+import "./../../main.css"
 import iconChat from '../../../img/icon-chat.png'
 import iconMoney from '../../../img/icon-money.png'
 import iconSecurity from '../../../img/icon-security.png'

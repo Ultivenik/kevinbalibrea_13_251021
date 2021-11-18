@@ -1,5 +1,6 @@
 import React from 'react'
-import './HeroContent.css'
+import './../../main.css'
+
 
 export default function HeroContent() {
     return (

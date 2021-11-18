@@ -1,5 +1,3 @@
-// import {AUTHENTIFICATION_USER, DECONECT, FIRST_NAME} from './actions'
-
 const initialState = {
         firstName: "",
         lastName: "",

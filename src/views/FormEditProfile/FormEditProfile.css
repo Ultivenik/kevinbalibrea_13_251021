@@ -1,0 +1,20 @@
+.edit-profile-form{
+    margin: 2em;
+}
+.text-field{
+    padding: 0.6em;
+    margin: auto .6em;
+}
+.btn{
+    margin: auto .5em;
+    width: 7em;
+    height: 2em;
+    color: #6458f5;
+    font-size: .9rem;
+    border-radius: 3px;
+    border: 1px solid #b3b3f0;
+}
+/* .btn-container{
+    display: flex;
+    justify-content: space-between;
+} */

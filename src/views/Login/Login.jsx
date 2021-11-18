@@ -1,8 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import Footer from '../Footer/Footer'
-import Header from '../Header/Header'
-import './Login.css'
+import "./../main.css"
 import { login } from '../../services/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -26,7 +24,6 @@ export default function Login() {
             }}
         /> : (
         <React.Fragment>
-            <Header />
             <main className="main bg-dark">
                 { error && <div>{error}</div>}
             <section className="sign-in-content">
@@ -55,7 +52,6 @@ export default function Login() {
                 </form>
             </section>
             </main>
-            <Footer />
         </React.Fragment>
     )
 }
