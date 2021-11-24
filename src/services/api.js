@@ -22,7 +22,6 @@ export const postUserProfile = async () =>{
             Authorization : "Bearer " + localStorage.getItem("JWT")
         }
     })
-        console.log(response.data);
 
     return response.data
 }
