@@ -102,6 +102,7 @@ body, #root {
 }
 
 @media (min-width: 920px) {
+
   .hero {
     height: 400px;
     background-position: 0% 33%;
@@ -130,6 +131,7 @@ body, #root {
 }
 
 @media (min-width: 920px) {
+
   .features {
     flex-direction: row;
   }
@@ -288,5 +290,11 @@ body, #root {
 
   .transaction-button {
     width: 200px;
+  }
+
+}
+@media (max-width: 1000px) {
+  .user-status{
+    font-size: .8rem;
   }
 }

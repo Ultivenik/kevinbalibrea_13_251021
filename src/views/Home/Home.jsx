@@ -4,6 +4,7 @@ import MainContent from "./MainContent/MainContent"
 import './../main.css'
 
 export default function Home() {
+
     return (
         <React.Fragment>
             <HeroContent />

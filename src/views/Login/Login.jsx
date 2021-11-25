@@ -16,7 +16,7 @@ export default function Login() {
             password: e.target[1].value
         }))
     }
-    console.log(error);
+
     return isLogged ?  <Redirect
             to={{
             pathname: "/user",
@@ -24,7 +24,7 @@ export default function Login() {
         /> : (
         <React.Fragment>
             <main className="main bg-dark">
-                { error && <div style={{color:"white", fontSize:"1.5rem"}}>{error}</div>}
+                { error ? <div style={{color:"white", fontSize:"1.5rem"}}>{error}</div> : null}
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>

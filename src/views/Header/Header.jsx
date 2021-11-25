@@ -4,6 +4,7 @@ import logo from "../../img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { disconected } from '../../services/actions'
 
 export default function Header() {
     const dispatch = useDispatch()
@@ -11,7 +12,7 @@ export default function Header() {
     const isLogged = useSelector(state => state.isLogged)
 
     const logout = () =>{
-        dispatch({type:"login/disconected"})
+        dispatch({type: disconected})
     }
 
     return (
@@ -24,7 +25,7 @@ export default function Header() {
                 />
                 <h1 className="sr-only">Argent Bank </h1>
             </Link>
-            { isLogged ? <div>
+            { isLogged ? <div className="user-status">
                     <Link className="main-nav-item" to="/user" >
                         <i className="fa fa-user-circle"></i>
                         {firstName}
@@ -34,10 +35,12 @@ export default function Header() {
                         Sign Out
                     </Link>
                 </div> :
-                <Link to="/login" className="main-nav-item">
-                    <i className="fa fa-user-circle"></i>
-                    Sign In
-                </Link>
+                <div className="user-status">
+                    <Link to="/login" className="main-nav-item">
+                        <i className="fa fa-user-circle"></i>
+                        Sign In
+                    </Link>
+                </div>
             }
         </nav>
     )

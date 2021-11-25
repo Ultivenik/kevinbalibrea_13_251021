@@ -1,3 +1,5 @@
+import { closeButton, disconected, editError, loginError, loginSuccess, openButton, profile } from "./actions"
+
 const initialState = {
         firstName: "",
         lastName: "",
@@ -5,58 +7,56 @@ const initialState = {
         token:"",
         isLogged: false,
         isOpen: false,
-        isUpdated: false
-}
+        isUpdated: false,
+        error: null
+    }
 export const userReducer = (state = initialState, action) => {
     switch(action.type) {
-        case "login/success":
+        case loginSuccess:
             const profil = action.payload
             return {
                 ...state,
                 firstName: profil.firstName,
                 lastName: profil.lastName,
                 isLogged: true,
-                // ..........
             }
-        case "login/error":
+        case loginError:
             return {
                 ...state,
                 isLogged: false,
                 error: action.payload,
-                // ..........
             }
-        case "login/disconected":
+        case disconected:
             localStorage.clear()
             return {
                 ...state,
                 isLogged: false,
-                isOpen:false
-                // ..........
+                isOpen:false,
+                error: null
             }
-        case "edit/profile":
+        case profile:
             return{
                 ...state,
                 isUpdated: true,
                 firstName: action.payload.firstName,
                 lastName: action.payload.lastName,
             }
-            case "edit/error":
+            case editError:
             return{
                 ...state,
                 isUpdated: false,
                 error: action.payload
             }
-        case "edit/openButton":
+        case openButton:
             return{
                 ...state,
                 isOpen: true,
             }
-        case "edit/closeButton":
+        case closeButton:
             return {
                 ...state,
                 isOpen:false
             }
-
         default:
             return state
     }

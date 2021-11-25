@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import FormEditProfile from '../FormEditProfile/FormEditProfile'
 import { useDispatch } from 'react-redux'
+import { openButton } from '../../services/actions'
 
 export default function User() {
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ export default function User() {
     const isOpen = useSelector(state => state.isOpen)
 
     const formOpen = () =>{
-        dispatch({type:"edit/openButton"})
+        dispatch({type: openButton})
     }
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { edit } from '../../services/actions';
+import { closeButton, edit } from '../../services/actions';
 import './FormEditProfile.css'
 
 export default function FormEditProfile() {
@@ -15,7 +15,7 @@ export default function FormEditProfile() {
     }
 
     const closeForm = () =>{
-        dispatch({type:"edit/closeButton"})
+        dispatch({type: closeButton})
     }
 
     return (
